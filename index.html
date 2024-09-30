@@ -29,11 +29,11 @@
             const errorMessage = document.getElementById('errorMessage');
 
             const successMessage=document.getElementById('successMessage')
-             // Get the values of name and address
-             const name = document.getElementById('name').value.trim();
-             const address = document.getElementById('address').value.trim();
-             console.log(name)
-             console.log(address)
+             // Get the values of name and address 
+             const name = document.getElementById('name')
+             const address = document.getElementById('address')
+             console.log(name.value)
+             console.log(address.value)
 
             async function onSubmitRegistrationForm(event){
                 
@@ -46,15 +46,15 @@
             errorMessage.textContent = '';
 
             // Simple validation
-            if (name === '' || address === '') {
+            if (name.value === '' || address.value === '') {
                 errorMessage.textContent = 'Please fill in both fields!';
                 return;
             }
 
             // Prepare the data to send
             const formData = {
-                name: name,
-                address: address
+                name: name.value,
+                address: address.value
             };
             try {
                 // Send data to backend using fetch
