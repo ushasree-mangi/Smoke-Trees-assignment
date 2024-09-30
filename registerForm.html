@@ -59,17 +59,20 @@
                     },
                     body: JSON.stringify(formData)
                 });
-
+                const result = await response.json();
                 // Handle the response from the backend
                 if (response.ok) {
-                    const result = await response.json();
+                    
                     alert('Registration successful!');
                     console.log('Server Response:', result);
 
                     // Reset the form fields
                     form.reset();
+                    errorMessage=""
                 } else {
-                    errorMessage.textContent = '*Error: Registration failed!';
+                    const {error_msg}=result
+                    errorMessage.textContent =error_msg;
+                    console.log(error_msg)
                     console.error('Error:', response.statusText);
                 }
             } catch (error) {
