@@ -10,7 +10,7 @@
     <body>
 
         <div class="bg-container">
-            <form onsubmit="onSubmitRegistrationForm(event)" method="POST" class="form-container">
+            <form  onsubmit="onSubmitRegistrationForm(event)" method="POST" class="form-container">
                 <h1>Registration Form</h1>
                 <!-- name input field -->
                 <label for="name">Name:</label>
@@ -20,6 +20,7 @@
                 <input type="text" id="address" name="address" placeholder="Enter your address" required>
                 
                 <p id="errorMessage"></p>
+                <p id="successMessage" ></p>
                 <button  type="submit">Submit</button>
             </form>
         </div>
@@ -27,14 +28,17 @@
 
             const errorMessage = document.getElementById('errorMessage');
 
+            const successMessage=document.getElementById('successMessage')
+             // Get the values of name and address
+             const name = document.getElementById('name').value.trim();
+             const address = document.getElementById('address').value.trim();
+
             async function onSubmitRegistrationForm(event){
                 
                  // Prevent the form from submitting the default way
                 event.preventDefault();
 
-            // Get the values of name and address
-            const name = document.getElementById('name').value.trim();
-            const address = document.getElementById('address').value.trim();
+           
 
             // Clear any previous error messages
             errorMessage.textContent = '';
@@ -63,12 +67,12 @@
                 // Handle the response from the backend
                 if (response.ok) {
                     
-                    alert('Registration successful!');
+                    successMessage.textContent='Registration successful!';
                     console.log('Server Response:', result);
 
                     // Reset the form fields
-                    form.reset();
-                    errorMessage=""
+                    errorMessage.textContent=''
+                   
                 } else {
                     const {error_msg}=result
                     errorMessage.textContent =error_msg;
@@ -81,7 +85,7 @@
             }
 
             }
-
+           
         </script>
     </body>
 </html>

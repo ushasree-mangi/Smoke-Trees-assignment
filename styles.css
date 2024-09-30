@@ -58,9 +58,15 @@ button{
    justify-self: center;
    font-size: 16px;
 }
-p{
+#errorMessage{
 
     color: red;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+#successMessage{
+    color: green;
     font-size: 18px;
     margin-top: 10px;
     margin-bottom: 15px;
