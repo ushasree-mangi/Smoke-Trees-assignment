@@ -78,10 +78,12 @@
                 } else {
                     const {error_msg}=result
                     errorMessage.textContent =error_msg;
+                    successMessage.textContent=''
                     console.log(error_msg)
                     console.error('Error:', response.statusText);
                 }
             } catch (error) {
+                 successMessage.textContent=''
                 errorMessage.textContent = '*Error: Could not connect to the server!';
                 console.error('Error:', error);
             }
